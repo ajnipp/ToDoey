@@ -12,7 +12,7 @@ struct ReminderList: Identifiable {
     var name: String
     var reminders = [Reminder]()
     var color = Color.blue
-    var iconName = "list.bullet"
+    var iconName = "list.bullet.circle.fill"
 }
 
 extension ReminderList {

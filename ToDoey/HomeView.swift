@@ -17,8 +17,9 @@ struct HomeView: View {
                         ReminderListView(reminderList: reminders)
                         
                     } label: {
-                        Label(reminders.name, systemImage: reminders.iconName)
+                        ReminderListListRowView(reminderList: reminders)
                     }
+                    .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
                     
                 }
             }
