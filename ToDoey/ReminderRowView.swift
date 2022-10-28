@@ -15,11 +15,42 @@ struct ReminderRowView: View {
             Button {
                 reminder.isComplete.toggle()
             } label: {
-                Image(systemName: reminder.isComplete ? "circle.fill" : "circle")
-                    .foregroundColor(color)
+                if reminder.isComplete {
+                    filledReminderLabel
+                } else {
+                    emptyReminderLabel
+                }
             }
+            .buttonStyle(.plain)
             Text(reminder.name)
         }
+    }
+    
+    
+    var filledReminderLabel: some View {
+        Image(systemName: "circle")
+            .bold()
+            .foregroundColor(color)
+            .overlay(alignment: .center) {
+                GeometryReader { geo in
+                    VStack {
+                        Circle() // sized based on first
+                            .fill(color)
+                            .frame(width: geo.size.width*0.55, height: geo.size.height*0.55, alignment: .center)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                    
+                }
+                
+                
+            }
+    }
+    
+    var emptyReminderLabel: some View {
+        Image(systemName: "circle")
+            .foregroundColor(.secondary)
+
     }
 }
 

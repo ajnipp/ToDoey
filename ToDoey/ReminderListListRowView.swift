@@ -12,6 +12,7 @@ struct ReminderListListRowView: View {
     var body: some View {
         HStack {
             Image(systemName: reminderList.iconName)
+                .font(.title3)
                 .foregroundColor(reminderList.color)
             Text(reminderList.name)
             Spacer()
