@@ -14,15 +14,17 @@ struct HomeView: View {
             List {
                 ForEach(reminderLists){ reminders in
                     NavigationLink {
+                        ReminderListView(reminderList: reminders)
                         
                     } label: {
-                        Text(reminders.name)
+                        Label(reminders.name, systemImage: reminders.iconName)
                     }
                     
                 }
             }
+            .navigationTitle("Reminders")
         }
-        .navigationTitle("Reminders")
+        
         .onAppear {
             reminderLists.append(ReminderList.example)
             reminderLists.append(ReminderList.example)
