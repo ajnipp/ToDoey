@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ReminderListView: View {
-    var reminderList: ReminderList = ReminderList.example
+    @State var reminderList: ReminderList = ReminderList.example
     var body: some View {
         
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 5) {
             HStack {
                 Text(reminderList.name)
                 Spacer()
@@ -29,12 +29,29 @@ struct ReminderListView: View {
             .listStyle(.inset)
         }
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .bottomBar) {
+                Button {
+                    // pressed
+                } label: {
+                    HStack(spacing: 7) {
+                        Image(systemName: "plus.circle.fill")
+                        Text("New Reminder")
+                            .bold()
+                    }
+                    
+                }
+                Spacer()
+            }
+        }
         
     }
 }
 
 struct ReminderListView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderListView()
+        NavigationStack {
+            ReminderListView()
+        }
     }
 }

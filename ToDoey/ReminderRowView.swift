@@ -21,22 +21,24 @@ struct ReminderRowView: View {
                     emptyReminderLabel
                 }
             }
+            .frame(width: 20, height: 20)
             .buttonStyle(.plain)
-            Text(reminder.name)
+//            .border(.red)
+            TextField(reminder.name, text: $reminder.name)
         }
     }
     
     
     var filledReminderLabel: some View {
-        Image(systemName: "circle")
-            .bold()
-            .foregroundColor(color)
+        Circle()
+            .stroke(color, lineWidth: 2)
+//            .bold()
             .overlay(alignment: .center) {
                 GeometryReader { geo in
                     VStack {
                         Circle() // sized based on first
                             .fill(color)
-                            .frame(width: geo.size.width*0.55, height: geo.size.height*0.55, alignment: .center)
+                            .frame(width: geo.size.width*0.7, height: geo.size.height*0.7, alignment: .center)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     
@@ -48,8 +50,8 @@ struct ReminderRowView: View {
     }
     
     var emptyReminderLabel: some View {
-        Image(systemName: "circle")
-            .foregroundColor(.secondary)
+        Circle()
+            .stroke(.secondary)
 
     }
 }
