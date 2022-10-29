@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReminderListView: View {
-    @State var reminderList: ReminderList = ReminderList.example
+    @State var reminderList: ReminderList
     var body: some View {
         
         VStack(alignment: .leading, spacing: 5) {
@@ -17,7 +17,7 @@ struct ReminderListView: View {
                 Spacer()
                 Text("\(reminderList.reminders.count)")
             }
-            .font(.largeTitle)
+            .font(.system(.largeTitle, design: .rounded))
             .bold()
             .foregroundColor(reminderList.color)
             .padding(.horizontal)
@@ -25,6 +25,7 @@ struct ReminderListView: View {
                 ForEach(reminderList.reminders) { reminder in
                     ReminderRowView(reminder: reminder, color: reminderList.color)
                 }
+                .onDelete(perform: delete)
             }
             .listStyle(.inset)
         }
@@ -32,13 +33,16 @@ struct ReminderListView: View {
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {
-                    // pressed
+                    reminderList.reminders.append(Reminder(name: ""))
                 } label: {
                     HStack(spacing: 7) {
                         Image(systemName: "plus.circle.fill")
                         Text("New Reminder")
-                            .bold()
+                            
                     }
+                    .font(.system(.body, design: .rounded))
+                    .bold()
+                    .foregroundColor(reminderList.color)
                     
                 }
                 Spacer()
@@ -46,12 +50,16 @@ struct ReminderListView: View {
         }
         
     }
+    
+    func delete(at offsets: IndexSet) {
+        reminderList.reminders.remove(atOffsets: offsets)
+    }
 }
 
 struct ReminderListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ReminderListView()
+            ReminderListView(reminderList: ReminderList.example)
         }
     }
 }

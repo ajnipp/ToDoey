@@ -11,9 +11,15 @@ struct ReminderListListRowView: View {
     let reminderList: ReminderList
     var body: some View {
         HStack {
-            Image(systemName: reminderList.iconName)
-                .font(.title3)
-                .foregroundColor(reminderList.color)
+            ZStack {
+                Circle()
+                    .fill(reminderList.color)
+                    .frame(width: 27)
+                Image(systemName: reminderList.iconName)
+                    .font(.footnote)
+                    .foregroundColor(.white)
+                    .bold()
+            }
             Text(reminderList.name)
             Spacer()
             Text("\(reminderList.reminders.count)")

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var reminderLists = [ReminderList]()
+    @State var reminderLists = ReminderList.exampleLists
     var body: some View {
         NavigationStack {
             List {
@@ -19,17 +19,13 @@ struct HomeView: View {
                     } label: {
                         ReminderListListRowView(reminderList: reminders)
                     }
-                    .listRowInsets(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    .listRowInsets(EdgeInsets(top: 15, leading: 10, bottom: 15, trailing: 15))
                     
                 }
             }
             .navigationTitle("Reminders")
         }
         
-        .onAppear {
-            reminderLists.append(ReminderList.example)
-            reminderLists.append(ReminderList.example)
-        }
     }
 }
 

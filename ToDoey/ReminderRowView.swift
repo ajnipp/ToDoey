@@ -25,6 +25,7 @@ struct ReminderRowView: View {
             .buttonStyle(.plain)
 //            .border(.red)
             TextField(reminder.name, text: $reminder.name)
+                .foregroundColor(reminder.isComplete ? .secondary : .primary)
         }
     }
     
