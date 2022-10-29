@@ -67,10 +67,8 @@
 			children = (
 				167A4F2E290B25F400C45959 /* ToDoeyApp.swift */,
 				167A4F30290B25F400C45959 /* ContentView.swift */,
-				167A4F3C290B260400C45959 /* HomeView.swift */,
-				167A4F4C290D9B6B00C45959 /* ListCardView.swift */,
+				167A4F4E290DA8AF00C45959 /* Home */,
 				167A4F4A290C670C00C45959 /* Model */,
-				167A4F48290B599E00C45959 /* ReminderListListRowView.swift */,
 				167A4F4B290D9B2500C45959 /* ReminderList */,
 				167A4F32290B25F600C45959 /* Assets.xcassets */,
 				167A4F34290B25F600C45959 /* Preview Content */,
@@ -102,6 +100,16 @@
 				167A4F44290B288200C45959 /* ReminderRowView.swift */,
 			);
 			path = ReminderList;
+			sourceTree = "<group>";
+		};
+		167A4F4E290DA8AF00C45959 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				167A4F3C290B260400C45959 /* HomeView.swift */,
+				167A4F48290B599E00C45959 /* ReminderListListRowView.swift */,
+				167A4F4C290D9B6B00C45959 /* ListCardView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
