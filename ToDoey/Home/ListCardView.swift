@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListCardView: View {
-    let reminderList: ReminderList
+    @Binding var reminderList: ReminderList
     @State private var linkIsActive = false
     var body: some View {
         Button {
@@ -38,7 +38,7 @@ struct ListCardView: View {
         .overlay(
             NavigationLink(
                 isActive: $linkIsActive,
-                destination: { ReminderListView(reminderList: reminderList) },
+                destination: { ReminderListView(reminderList: $reminderList) },
                 label: { EmptyView() }
             ).opacity(0)
         )
@@ -60,6 +60,6 @@ struct ListCardView: View {
 
 struct ListCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ListCardView(reminderList: ReminderList.example)
+        ListCardView(reminderList: .constant(ReminderList.example))
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReminderListView: View {
-    @State var reminderList: ReminderList
+    @Binding var reminderList: ReminderList
     var body: some View {
         
         VStack(alignment: .leading, spacing: 5) {
@@ -22,8 +22,8 @@ struct ReminderListView: View {
             .foregroundColor(reminderList.color)
             .padding(.horizontal)
             List {
-                ForEach(reminderList.reminders) { reminder in
-                    ReminderRowView(reminder: reminder, color: reminderList.color)
+                ForEach($reminderList.reminders) { $reminder in
+                    ReminderRowView(reminder: $reminder, color: reminderList.color)
                 }
                 .onDelete(perform: delete)
             }
@@ -59,7 +59,7 @@ struct ReminderListView: View {
 struct ReminderListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            ReminderListView(reminderList: ReminderList.example)
+            ReminderListView(reminderList: .constant(ReminderList.example))
         }
     }
 }

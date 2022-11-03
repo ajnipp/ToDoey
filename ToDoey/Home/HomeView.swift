@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     @State var reminderLists = ReminderList.exampleLists
+    @State var exampleToday = ReminderList.exampleToday
+    @State var exampleScheduled = ReminderList.exampleScheduled
+    @State var exampleFlagged = ReminderList.exampleFlagged
     var body: some View {
         NavigationStack {
             VStack {
@@ -17,21 +20,21 @@ struct HomeView: View {
                     Section {
                         VStack {
                             HStack {
-                                ListCardView(reminderList: ReminderList.exampleToday)
-                                ListCardView(reminderList: ReminderList.exampleScheduled)
+                                ListCardView(reminderList: $exampleToday)
+                                ListCardView(reminderList: $exampleScheduled)
                             }
                             HStack {
-                                ListCardView(reminderList: allReminders)
-                                ListCardView(reminderList: ReminderList.exampleFlagged)
+                                ListCardView(reminderList: .constant(allReminders))
+                                ListCardView(reminderList: $exampleFlagged)
                             }
                         }
                     }
                     .listRowBackground(Color(UIColor.systemGroupedBackground))
                     .listRowInsets(EdgeInsets())
                     Section {
-                        ForEach(reminderLists){ reminders in
+                        ForEach($reminderLists){ $reminders in
                             NavigationLink {
-                                ReminderListView(reminderList: reminders)
+                                ReminderListView(reminderList: $reminders)
                                 
                             } label: {
                                 ReminderListListRowView(reminderList: reminders)

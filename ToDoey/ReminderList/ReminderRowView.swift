@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReminderRowView: View {
-    @State var reminder: Reminder
+    @Binding var reminder: Reminder
     let color: Color
     var body: some View {
         HStack {
@@ -59,6 +59,6 @@ struct ReminderRowView: View {
 
 struct ReminderRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ReminderRowView(reminder: Reminder.example, color: Color.blue)
+        ReminderRowView(reminder: .constant(Reminder.example), color: Color.blue)
     }
 }
